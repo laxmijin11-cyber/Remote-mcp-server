@@ -53,11 +53,17 @@ def server_info() -> str:
     return json.dumps(info, indent=2)
 
 
-app = mcp.http_app()
+if __name__ == "__main__":
+    mcp.run()
+
+# THIS is the proper ASGI app for Prefect Cloud in FastMCP 2.x:
+app = mcp.streamable_http_app()
+
+# app = mcp.http_app()
 
 # Start the server
-if __name__ == "__main__":
-    mcp.run(transport="http", host="0.0.0.0", port=8000)
+# if __name__ == "__main__":
+#     mcp.run(transport="http", host="0.0.0.0", port=8000)
 
 # Problem: json.dump() writes to a file. You want to return a string. Also, it's missing the obj parameter.
 # return json.dumps(info, indent=2)
