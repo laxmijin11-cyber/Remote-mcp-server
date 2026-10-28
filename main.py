@@ -57,9 +57,9 @@ if __name__ == "__main__":
     mcp.run()
 
 # THIS is the proper ASGI app for Prefect Cloud in FastMCP 2.x:
-app = mcp.streamable_http_app()
+# app = mcp.streamable_http_app()
 
-# app = mcp.http_app()
+app = mcp.http_app()
 
 # Start the server
 # if __name__ == "__main__":
